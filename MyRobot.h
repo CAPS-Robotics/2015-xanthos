@@ -1,6 +1,8 @@
 #ifndef __MY_ROBOT_H__
 #define __MY_ROBOT_H__
 
+//Hella macros
+
 #define JOY_PORT_1          1
 #define JOY_PORT_2          2
 #define JOY_PORT_3          3
@@ -42,5 +44,44 @@
 
 #define COMPRESSOR_SWITCH	1
 #define COMPRESSOR_RELAY	1
+
+//End hella macros
+
+//Globals (I really don't like having to do this)
+RobotDrive      *drive;
+Joystick        *joystick;
+DoubleSolenoid  *gearShifter;
+DoubleSolenoid  *shooter;
+DoubleSolenoid  *jaw;
+DoubleSolenoid  *neck;
+Compressor      *compressor;
+
+bool             driveRun;
+pthread_t        driveThread;
+//End globals
+
+//Lonely prototype
+void* driveFunc(void* arg);
+
+//Class definition
+class Xanthos : public IterativeRobot
+{
+public:
+    Xanthos();
+    void TestInit();
+    void DisabledPeriodic();
+    void AutonomousPeriodic();
+    void AutonomousInit();
+    void TeleopPeriodic();
+    void TestPeriodic();
+
+    ~Xanthos();
+
+    void RobotInit();
+
+    void TeleopInit();
+
+    void DisabledInit();
+};
 
 #endif
