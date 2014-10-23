@@ -1,6 +1,8 @@
 #ifndef __MY_ROBOT_H__
 #define __MY_ROBOT_H__
 
+#include <pthread.h>
+
 //Hella macros
 
 #define JOY_PORT_1          1
@@ -55,6 +57,7 @@ DoubleSolenoid  *shooter;
 DoubleSolenoid  *jaw;
 DoubleSolenoid  *neck;
 Compressor      *compressor;
+DriverStationLCD*lcd;
 
 bool             driveRun;
 pthread_t        driveThread;

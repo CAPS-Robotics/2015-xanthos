@@ -1,6 +1,5 @@
 #include "WPILib.h"
 #include "MyRobot.h"
-#include <pthread.h>
 
 Xanthos::Xanthos() {}
 void Xanthos::TestInit() {}
@@ -19,6 +18,7 @@ Xanthos::~Xanthos()
     delete jaw;
     delete neck;
     delete compressor;
+    delete lcd;
 }
 
 void Xanthos::RobotInit()
@@ -30,7 +30,11 @@ void Xanthos::RobotInit()
     jaw = new DoubleSolenoid(JAW_OPEN, JAW_CLOSE);
     neck = new DoubleSolenoid(NECK_UP, NECK_DOWN);
     compressor = new Compressor(COMPRESSOR_SWITCH, COMPRESSOR_RELAY);
-
+    lcd = DriverStationLCD::GetInstance();
+    
+    drive->SetSafetyEnabled(false);
+    lcd->PrintfLine(DriverStationLCD::kUser_Line2, "Please dear God");
+    
     pthread_create(&driveThread, NULL, driveFunc, NULL);
 }
 
@@ -52,7 +56,7 @@ void* driveFunc(void* arg)
         //drive with tank drive
         if(driveRun)
         {
-            drive->ArcadeDrive(joystick);
+            drive->TankDrive((joystick->GetRawAxis(JOY_AXIS_LY) / 128.f) * 100, (joystick->GetRawAxis(JOY_AXIS_RY) / 128.f) * 100);
         }
 
         // Gear shifter input routines
