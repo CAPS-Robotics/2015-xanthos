@@ -20,10 +20,10 @@
 #define JOY_BTN_LTG         7
 #define JOY_BTN_RTG         8
 
-#define JOY_SPC_BCK         9
-#define JOY_SPC_STR         10
-#define JOY_SPC_LST         11
-#define JOY_SPC_RST         12
+#define JOY_SPC_BCK         9  //Back button
+#define JOY_SPC_STR         10 //Start button
+#define JOY_SPC_LST         11 //Push the left stick in
+#define JOY_SPC_RST         12 //Push the right stick in
 
 #define JOY_AXIS_LX         1
 #define JOY_AXIS_LY         2
@@ -35,6 +35,9 @@
 #define LEFT_MOTOR_PWM		1
 #define RIGHT_MOTOR_PWM		2
 
+#define FIRST_SOLENOID_BUMPER	1
+#define SECOND_SOLENOID_BUMPER	4
+
 #define GEAR_SHIFT_EXTEND	1
 #define	GEAR_SHIFT_RETRACT	2
 #define SHOOT_EXTEND		3
@@ -43,6 +46,8 @@
 #define JAW_CLOSE			6
 #define NECK_UP				7
 #define NECK_DOWN			8
+#define LOCK_LOCK			1
+#define LOCK_UNLOCK			2
 
 #define COMPRESSOR_SWITCH	1
 #define COMPRESSOR_RELAY	1
@@ -54,6 +59,7 @@ RobotDrive      *drive;
 Joystick        *joystick;
 DoubleSolenoid  *gearShifter;
 DoubleSolenoid  *shooter;
+DoubleSolenoid	*lock;
 DoubleSolenoid  *jaw;
 DoubleSolenoid  *neck;
 Compressor      *compressor;
@@ -61,10 +67,15 @@ DriverStationLCD*lcd;
 
 bool             driveRun;
 pthread_t        driveThread;
+pthread_t		 inputThread;
+pthread_t		 cockingThread;
 //End globals
 
 //Lonely prototype
+//EDIT: Now has friends
 void* driveFunc(void* arg);
+void* inputFunc(void* arg);
+void* cockingFunc(void* arg);
 
 //Class definition
 class Xanthos : public IterativeRobot
