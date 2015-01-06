@@ -10,21 +10,20 @@ void* cockingFunc(void* arg);
 class Xanthos : public IterativeRobot
 {
 public:
-    Xanthos();
-    void TestInit();
-    void DisabledPeriodic();
-    void AutonomousPeriodic();
-    void AutonomousInit();
-    void TeleopPeriodic();
-    void TestPeriodic();
-
+    Xanthos() {};
     ~Xanthos();
 
     void RobotInit();
-
     void TeleopInit();
-
     void DisabledInit();
+
+    // unused functions
+    void TestInit() {}
+    void DisabledPeriodic() {}
+    void AutonomousPeriodic() {}
+    void AutonomousInit() {}
+    void TeleopPeriodic() {}
+    void TestPeriodic() {}
 };
 
 #endif

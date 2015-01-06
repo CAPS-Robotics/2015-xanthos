@@ -1,14 +1,6 @@
 #include "WPILib.h"
 #include "MyRobot.h"
 
-Xanthos::Xanthos() {}
-void Xanthos::TestInit() {}
-void Xanthos::DisabledPeriodic() {}
-void Xanthos::AutonomousPeriodic() {}
-void Xanthos::AutonomousInit() {}
-void Xanthos::TeleopPeriodic() {}
-void Xanthos::TestPeriodic() {}
-
 Xanthos::~Xanthos()
 {
     delete drive;
