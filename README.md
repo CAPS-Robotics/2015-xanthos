@@ -1,7 +1,6 @@
 2015-xanthos
 ============
 
-Robot Code for our 2014 off-season competition
+Robot code for the 2015 First Robotics Competition
 
-- Tank drive
-- Threaded
+Written by [Wes Caldwell](https://github.com/killmous) and [Jacob Hegna](https://github.com/jacob-hegna)
