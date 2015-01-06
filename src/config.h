@@ -16,10 +16,10 @@
 #define JOY_BTN_LTG         7
 #define JOY_BTN_RTG         8
 
-#define JOY_SPC_BCK         9  //Back button
-#define JOY_SPC_STR         10 //Start button
-#define JOY_SPC_LST         11 //Push the left stick in
-#define JOY_SPC_RST         12 //Push the right stick in
+#define JOY_SPC_BCK         9  // Back button
+#define JOY_SPC_STR         10 // Start button
+#define JOY_SPC_LST         11 // Push the left stick in
+#define JOY_SPC_RST         12 // Push the right stick in
 
 #define JOY_AXIS_LX         1
 #define JOY_AXIS_LY         2
